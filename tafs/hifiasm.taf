@@ -1,0 +1,9 @@
++TOOL:hifiasm
+ARGS
+    <else>
+        hifiasm --help
+    <main>
+        hifiasm ::*APP-ARGS*::
+RUN
+    <container:taf-hifiasm-v0.25.0:ghcr.io/taffish-org/hifiasm:0.25.0>
+        ::*MAIN*::

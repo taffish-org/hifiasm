@@ -1,0 +1,7 @@
+(:name           "hifiasm")
+(:repo           "taffish-org/hifiasm")
+(:author         "KaiyuanHan")
+(:version        "0.25.0")
+(:intro          "Hifiasm: a haplotype-resolved assembler for accurate Hifi reads")
+(:dependencies)
+(:functions      "hifiasm")
