@@ -1,7 +1,7 @@
 +TOOL:hifiasm
 ARGS
     <else>
-        hifiasm --help
+        hifiasm
     <main>
         hifiasm ::*APP-ARGS*::
 RUN

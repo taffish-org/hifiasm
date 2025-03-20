@@ -1,7 +1,7 @@
 # <hifiasm:0.25.0 | KaiyuanHan | 2025-03-20>
 ARGS
     <else>
-        hifiasm --help
+        hifiasm
     <main>
         hifiasm ::*APP-ARGS*::
 RUN
