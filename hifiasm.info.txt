@@ -1,9 +1,17 @@
-# <hifiasm:0.25.0 | KaiyuanHan | 2025-03-20>
-ARGS
-    <else>
-        hifiasm
-    <main>
-        hifiasm ::*APP-ARGS*::
-RUN
-    <container:taf-hifiasm-v0.25.0:ghcr.io/taffish-org/hifiasm:0.25.0>
-        ::*MAIN*::
+# <hifiasm:0.25.0 | KaiyuanHan | 2025-05-06>
+Usage:
+  taf-hifiasm hifiasm -h
+  taf-hifiasm hifiasm ...
+  taf-hifiasm --hi {hifi.file.fastq(.gz)}
+  taf-hifiasm --oi {ont.file.fastq(.gz)}
+  taf-hifiasm --hi {hifi.file.fastq(.gz)} --oi {ont.file.fastq(.gz)}
+  taf-hifiasm --hi {hifi.file.fastq(.gz)} --oi {ont.file.fastq(.gz)} --h1 {hic.r1.fastq(.gz)} --h2 {hic.r2.fastq(.gz)}
+  ...
+Opts:
+  --hi, --hifiin  # input HIFI file           ![MAY NEED]  # Need at least one of {hi} or {oi}
+  --oi, --ontin   # input ONT  file           ![MAY NEED]  # Need at least one of {hi} or {oi}
+  --h1, --hic1    # input hic R1 fastq file    [default NULL]
+  --h2, --hic2    # input hic R2 fastq file    [default NULL]
+  --k,  --key     # keyname                    [default results]
+  --t,  --threads # threads of CPU             [default 64]
+  --od, --outdir  # outdir for all outputs     [default {*WORKDIR*}/out-hifiasm-{key}]

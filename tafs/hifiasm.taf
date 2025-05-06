@@ -1,9 +1,54 @@
 +TOOL:hifiasm
 ARGS
-    <else>
-        hifiasm
-    <main>
-        hifiasm ::*APP-ARGS*::
+  <else>
+    cat ::*LOAD-DIR*::../hifiasm.info.txt
+  <main>
+    # set -e ;
+    if [ "::oi::-::hi::" = "NULL-NULL" ]; then
+        echo "[Error] You need at least one input, {hifin} or {ontin}" ;
+    elif [ "::oi::" = "NULL" ]; then
+        mkdir ::outdir:: ;
+        if [ "::h1::-::h2::" = "NULL-NULL" ]; then
+            hifiasm -t ::t::       -o ::ho::                                     ::hi:: ;
+        else
+            hifiasm -t ::t::       -o ::ho:: --h1 ::h1:: --h2 ::h2::             ::hi:: ;
+        fi ;
+    elif [ "::hi::" = "NULL" ]; then
+        mkdir ::outdir:: ;
+        if [ "::h1::-::h2::" = "NULL-NULL" ]; then ;
+            hifiasm -t ::t:: --ont -o ::ho::                              ::oi:: ;
+        else
+            hifiasm -t ::t:: --ont -o ::ho:: --h1 ::h1:: --h2 ::h2::      ::oi:: ;
+        fi ;
+    else
+        mkdir ::outdir:: ;
+        if [ "::h1::-::h2::" = "NULL-NULL" ]; then ;
+            hifiasm -t ::t::       -o ::ho::                         --ul ::oi:: ::hi:: ;
+        else
+            hifiasm -t ::t::       -o ::ho:: --h1 ::h1:: --h2 ::h2:: --ul ::oi:: ::hi:: ;
+        fi ;
+    fi ;
+  <opts-default>
+    key           results
+    hifiin        NULL
+    ontin         NULL
+    hic1          NULL
+    hic2          NULL
+    threads       64
+    quast-threads ::t::
+    outdir        ::*WORKDIR*::out-hifiasm-::k::/
+    hifiasm-out   ::od::::k::.asm
+  <opts>
+    k  ::key::
+    h1 ::hic1::
+    h2 ::hic2::
+    t  ::threads::
+    qt ::quast-threads::
+    od ::outdir::
+    ho ::hifiasm-out::
+  <need>
+    oi ::ontin::   # input ONT fastq file
+    hi ::hifiin::  # input hifi fastq file
 RUN
-    <container:taf-hifiasm-v0.25.0:ghcr.io/taffish-org/hifiasm:0.25.0>
-        ::*MAIN*::
+  <container:taf-hifiasm-v0.25.0:ghcr.io/taffish-org/hifiasm:0.25.0>
+    ::*MAIN*::
