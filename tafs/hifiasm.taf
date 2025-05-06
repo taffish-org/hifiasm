@@ -9,23 +9,23 @@ ARGS
     elif [ "::oi::" = "NULL" ]; then
         mkdir ::outdir:: ;
         if [ "::h1::-::h2::" = "NULL-NULL" ]; then
-            hifiasm -t ::t::       -o ::ho::                                     ::hi:: ;
+            hifiasm -t ::t:: -o ::ho::                         ::hi:: ;
         else
-            hifiasm -t ::t::       -o ::ho:: --h1 ::h1:: --h2 ::h2::             ::hi:: ;
+            hifiasm -t ::t:: -o ::ho:: --h1 ::h1:: --h2 ::h2:: ::hi:: ;
         fi ;
     elif [ "::hi::" = "NULL" ]; then
         mkdir ::outdir:: ;
-        if [ "::h1::-::h2::" = "NULL-NULL" ]; then ;
-            hifiasm -t ::t:: --ont -o ::ho::                              ::oi:: ;
+        if [ "::h1::-::h2::" = "NULL-NULL" ]; then
+            hifiasm -t ::t:: --ont -o ::ho::                         ::oi:: ;
         else
-            hifiasm -t ::t:: --ont -o ::ho:: --h1 ::h1:: --h2 ::h2::      ::oi:: ;
+            hifiasm -t ::t:: --ont -o ::ho:: --h1 ::h1:: --h2 ::h2:: ::oi:: ;
         fi ;
     else
         mkdir ::outdir:: ;
-        if [ "::h1::-::h2::" = "NULL-NULL" ]; then ;
-            hifiasm -t ::t::       -o ::ho::                         --ul ::oi:: ::hi:: ;
+        if [ "::h1::-::h2::" = "NULL-NULL" ]; then
+            hifiasm -t ::t:: -o ::ho::                         --ul ::oi:: ::hi:: ;
         else
-            hifiasm -t ::t::       -o ::ho:: --h1 ::h1:: --h2 ::h2:: --ul ::oi:: ::hi:: ;
+            hifiasm -t ::t:: -o ::ho:: --h1 ::h1:: --h2 ::h2:: --ul ::oi:: ::hi:: ;
         fi ;
     fi ;
   <opts-default>
